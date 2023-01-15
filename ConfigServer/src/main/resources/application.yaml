@@ -9,7 +9,7 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/sendtoavinash/spring-app-config
+          uri: https://github.com/sendtoavinash/springAppConfig
           clone-on-start: true
 
 eureka:

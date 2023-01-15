@@ -3,6 +3,7 @@ package com.avi.OrderService.Service;
 import com.avi.OrderService.Entity.Order;
 import com.avi.OrderService.Model.OrderRequest;
 import com.avi.OrderService.Repository.OrderRepository;
+import com.avi.OrderService.external.client.ProductService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,12 +17,15 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     private OrderRepository orderRepository;
 
+    @Autowired
+    private ProductService productService;
+
     @Override
     public long placeOrder(OrderRequest orderRequest) {
 
         log.info("Placing Order Request: {}", orderRequest);
 
-//        productService.reduceQuantity(orderRequest.getProductId(), orderRequest.getQuantity());
+        productService.reduceQuantity(orderRequest.getProductId(), orderRequest.getQuantity());
 
         log.info("Creating Order with Status CREATED");
         Order order = Order.builder()
