@@ -11,10 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface ProductService {
 
     @PutMapping("/reduceQuantity/{id}")
-    ResponseEntity<Void> reduceQuantity(
-            @PathVariable("id") long productId,
-            @RequestParam long quantity
-    );
+    ResponseEntity<Void> reduceQuantity(@PathVariable("id") long productId, @RequestParam long quantity);
 
 
 //    default ResponseEntity<Void> fallback(Exception e) {
