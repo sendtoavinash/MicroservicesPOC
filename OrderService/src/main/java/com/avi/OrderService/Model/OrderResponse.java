@@ -35,7 +35,7 @@ public class OrderResponse {
     @AllArgsConstructor
     @NoArgsConstructor
     @Builder
-    public static class PaymentDetails{
+    public static class PaymentDetails {
         private long paymentId;
         private PaymentMode paymentMode;
         private String paymentStatus;

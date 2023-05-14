@@ -1,6 +1,7 @@
 package com.avi.OrderService.Controller;
 
 import com.avi.OrderService.Model.OrderRequest;
+import com.avi.OrderService.Model.OrderResponse;
 import com.avi.OrderService.Service.OrderService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,5 +27,15 @@ public class OrderController {
         long orderId = orderService.placeOrder(orderRequest);
         log.info("Order Id: {}", orderId);
         return new ResponseEntity<>(orderId, HttpStatus.OK);
+    }
+
+//    @PreAuthorize("hasAuthority('Admin') || hasAuthority('Customer')")
+    @GetMapping("/{orderId}")
+    public ResponseEntity<OrderResponse> getOrderDetails(@PathVariable long orderId) {
+        OrderResponse orderResponse
+                = orderService.getOrderDetails(orderId);
+
+        return new ResponseEntity<>(orderResponse,
+                HttpStatus.OK);
     }
 }

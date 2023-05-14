@@ -15,6 +15,11 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
+    @RequestMapping(method = RequestMethod.GET, value = "/", produces = "text/html")
+    public String welcome() {
+        return "Hello! This is the default welcome page for a Spring Boot Service";
+    }
+
     @PostMapping
     public ResponseEntity<Long> addProduct(@RequestBody ProductRequest productRequest) {
         long productId = productService.addProduct(productRequest);
